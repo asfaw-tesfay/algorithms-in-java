@@ -1,10 +1,10 @@
 package rotate_matrix_nintey;
 
 class Matrix {
-  static int[][] rotateNinteyV1(int[][] matrix) {
+  static void rotateNinteyV1(int[][] matrix) {
     int n = matrix.length;
     if (matrix.length == 0 || matrix[0].length != n)
-      return null;
+      return;
     for (int i = 0; i < n/2; i++) {
       for (int j = i; j < n-1-i; j++) {
         int left = matrix[j][i];
@@ -18,6 +18,5 @@ class Matrix {
         matrix[i][n-1-j] = left;
       }
     }
-    return matrix;
   }
 }
