@@ -1,4 +1,4 @@
-package partition_linked_list;
+package linked_list;
 
 class LinkedList<T extends Comparable<T>> {
   private Node<T> head = null;

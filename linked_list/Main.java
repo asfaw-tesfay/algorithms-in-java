@@ -1,4 +1,4 @@
-package partition_linked_list;
+package linked_list;
 
 class Main {
   public static void main(String[] args) {
