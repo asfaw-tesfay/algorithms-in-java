@@ -5,7 +5,7 @@ class LinkedList<T extends Comparable<T>> {
   private Node<T> tail = null;
   private int size = 0;
 
-  class Node<T extends Comparable<T>> {
+  private static class Node<T extends Comparable<T>> {
     private T data;
     private Node<T> prev, next;
 
@@ -51,6 +51,46 @@ class LinkedList<T extends Comparable<T>> {
       tail = n;
     }
     size++;
+  }
+
+  public void addFirst(T val) {
+    Node<T> n = new Node<>(val);
+    if (head == null) {
+      head = tail = n;
+    } else {
+      n.next = head;
+      head.prev = n;
+      head = n;
+    }
+
+    size++;
+  }
+
+  public static LinkedList addInt(LinkedList ll1, LinkedList ll2) {
+    Node<Integer> trav1 = ll1.tail;
+    Node<Integer> trav2 = ll2.tail;
+
+    LinkedList<Integer> sum = new LinkedList<>();
+    Integer carry = 0;
+    Integer subSum = 0;
+
+    while (trav1 != null || trav2 != null) {
+      subSum = carry;
+      if (trav1 != null) subSum += trav1.data;
+      if (trav2 != null) subSum += trav2.data;
+
+      carry = subSum / 10; //1 for >= 10, 0 for less than 10
+      subSum = subSum % 10;
+      sum.addFirst(subSum);
+
+      if (trav1 != null) trav1 = trav1.prev;
+      if (trav2 != null) trav2 = trav2.prev;
+
+      if (trav1 == null && trav2 == null & carry > 0)
+        sum.addFirst(carry);
+    }
+
+    return sum;
   }
 
   @Override
