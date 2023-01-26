@@ -23,5 +23,10 @@ class Main {
     System.out.println(ll1.toString());
     System.out.println(ll2.toString());
     System.out.println(sum.toString());
+
+    //Detect loop. Returns the collision point or null.
+    System.out.println("Detect loop");
+    System.out.println(ll.toString());
+    System.out.println(ll.detectLoop());
   }
 }

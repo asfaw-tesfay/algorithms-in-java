@@ -1,5 +1,8 @@
 package linked_list;
 
+import java.util.Set;
+import java.util.HashSet;
+
 class LinkedList<T extends Comparable<T>> {
   private Node<T> head = null;
   private Node<T> tail = null;
@@ -91,6 +94,23 @@ class LinkedList<T extends Comparable<T>> {
     }
 
     return sum;
+  }
+
+  // Assume we are dealing with single linked list
+  public T detectLoop() {
+    // Simulate collision
+    tail.next = head.next.next.next;
+
+    Set<Node<T>> set = new HashSet<>();
+
+    Node<T> trav = head;
+    while (trav != null) {
+      if (!set.add(trav))
+        return trav.data;
+
+      trav = trav.next;
+    }
+    return null;
   }
 
   @Override
